@@ -735,6 +735,7 @@ function processPayment()
 	/////////////////////////////////////////////////////////////////////////////
 	// Build a request message
 	var send_data = "srv=finance_update_cc_expiration_log&format=json&paymentid=" + $('#paymentid').val()
+			+ "&manager=" + $("#myemail").text() 
 			+ "&cardexpmonth=" + $('#cardexpmonth').val() + "&cardexpyear=" + $('#cardexpyear').val();
 	
 	// Call a web service to Update Credit Card Expiration date
@@ -899,6 +900,7 @@ function processRecurring()
 	var send_data = "";
 	// Build a request message
 	send_data = "srv=finance_update_recurring_log&format=json&recurringid=" + recurringid + "&cid=" + cid + "&name=" + name
+			+ "&manager=" + $("#myemail").text() 
 			+ "&status=" + status + "&amount=" + totalamount + "&fundcount=2" 
 			+ "&fundid0=" + fund1id + "&fundtype0=GEN" + "&fundamount0=" + amountGEN
 			+ "&fundid1=" + fund2id + "&fundtype1=MIS" + "&fundamount1=" + amountMIS 
