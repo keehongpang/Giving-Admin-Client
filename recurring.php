@@ -158,6 +158,7 @@
 		</div>
 		<div class="panel-body">
 			<form class="form-horizontal">	
+				<input type="hidden" 	id="giftcid" 		name="giftcid" 		value="">
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Name</label>
 					<div class="col-sm-10">
@@ -491,11 +492,12 @@ $(document).ready(function () {
 			return false;
 		}
 		
-		console.log('You clicked a scheduled Recurring ID ' + data.recurringId + ' with payment id ' + data.paymentId);
+		console.log('You clicked a recurring id ' + data.recurringId + ' with payment id ' + data.paymentId);
 		
 		///////////////////////////////////////////////////////////
 		// Fill the values in 'User Information' section
 		///////////////////////////////////////////////////////////
+		$("#giftcid").val(data.cid);
 		$("#name").html(data.name);
 		$("#email").html(data.email);
 		$("#address1").html(data.address1);
@@ -732,7 +734,7 @@ function processPayment()
 	// 		Sending credit card expiration date update and Response handling
 	/////////////////////////////////////////////////////////////////////////////
 	// Build a request message
-	var send_data = "srv=finance_update_cc_expiration&format=json&paymentid=" + $('#paymentid').val()
+	var send_data = "srv=finance_update_cc_expiration_log&format=json&paymentid=" + $('#paymentid').val()
 			+ "&cardexpmonth=" + $('#cardexpmonth').val() + "&cardexpyear=" + $('#cardexpyear').val();
 	
 	// Call a web service to Update Credit Card Expiration date
@@ -815,6 +817,9 @@ function processRecurring()
 	var place 		= $("#place").val();
 	var nextdate 	= $("#datepicker").val();
 	var status		= $("#status1").val();
+	
+	var cid			= $("#giftcid").val();
+	var name		= $("#name").html();
 
 	////////////////////////////////////////
 	// 		Validation check
@@ -893,7 +898,7 @@ function processRecurring()
 
 	var send_data = "";
 	// Build a request message
-	send_data = "srv=finance_update_recurring&format=json&recurringid=" + recurringid
+	send_data = "srv=finance_update_recurring_log&format=json&recurringid=" + recurringid + "&cid=" + cid + "&name=" + name
 			+ "&status=" + status + "&amount=" + totalamount + "&fundcount=2" 
 			+ "&fundid0=" + fund1id + "&fundtype0=GEN" + "&fundamount0=" + amountGEN
 			+ "&fundid1=" + fund2id + "&fundtype1=MIS" + "&fundamount1=" + amountMIS 
