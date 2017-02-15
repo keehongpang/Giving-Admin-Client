@@ -723,7 +723,7 @@ function processUpdateTransaction()
 
 	var send_data = "";
 	// Build a request message
-	send_data = "srv=finance_update_transaction&format=json&txnid=" + txnid 
+	send_data = "srv=finance_update_transaction_log&format=json&txnid=" + txnid 
 			+ "&manager=" + $("#myemail").text() + "&txncid=" + $("#txncid").val()
 			+ "&giftid=" + giftid + "&amount=" + totalamount + "&fundcount=2" 
 			+ "&fundid0=" + fund1id + "&fundtype0=GEN" + "&fundamount0=" + amountGEN
