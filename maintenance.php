@@ -847,7 +847,7 @@ function processDuplicateTransaction()
 
 	var send_data = "";
 	// Build a request message
-	send_data = "srv=finance_duplicate_transaction&format=json&txnid=" + txnid + "&manager=" + $("#myemail").text();
+	send_data = "srv=finance_duplicate_transaction_log&format=json&txnid=" + txnid + "&manager=" + $("#myemail").text();
 			
 	// Call a web service to DUPLICATE a gift Transaction
 	$.ajax({
@@ -952,7 +952,7 @@ function processDeleteTransaction()
 	
 	var send_data = "";
 	// Build a request message
-	send_data = "srv=finance_delete_transaction&format=json&txnid=" + txnid + "&manager=" + $("#myemail").text();
+	send_data = "srv=finance_delete_transaction_log&format=json&txnid=" + txnid + "&manager=" + $("#myemail").text();
 			
 	// Call a web service to delete a Transaction
 	$.ajax({
