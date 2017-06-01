@@ -536,9 +536,10 @@ $(document).ready(function () {
 			// Case: if expiration month is expired and year is current year
 			else if (nowyear == data.expyear)
 			{
-				var nowMonthFloat	= parseFloat(nowmonth).toFixed(2);
-				var expMonthFloat	= parseFloat(data.expmonth).toFixed(2);
-				if (nowMonthFloat > expMonthFloat)
+//				var nowMonthFloat	= parseFloat(nowmonth).toFixed(2);
+//				var expMonthFloat	= parseFloat(data.expmonth).toFixed(2);
+//				if (nowMonthFloat > expMonthFloat)
+				if (nowmonth > data.expmonth)
 				{
 					$("#dangerpayment").html("Credit Card expired. Please update it.");
 					$("#dangerpayment").show();
